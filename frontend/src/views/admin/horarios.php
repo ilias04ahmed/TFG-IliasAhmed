@@ -153,7 +153,6 @@
 </div>
 
 <script>
-    // API_BASE viene del header (global)
     let lineasData = [];
 
     async function init() {

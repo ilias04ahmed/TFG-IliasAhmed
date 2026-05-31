@@ -417,9 +417,7 @@
         }).join('');
     }
 
-    // ==================
     // Modal: Crear
-    // ==================
     function openModal() {
         segmentCount = 0;
         document.getElementById('segmentos-container').innerHTML = '';
@@ -654,9 +652,7 @@ function ejecutarPlanificacion() {
         }
     }
 
-    // ==================
     // Segmentos dinámicos
-    // ==================
     function addSegmentForm() {
     segmentCount++;
     updateSegCount();
@@ -772,9 +768,7 @@ function ejecutarPlanificacion() {
         destinoSelect.disabled = false;
     }
 
-    // ==================
     // Guardar
-    // ==================
     async function saveFavorito() {
         const nombre = document.getElementById('input-nombre').value.trim();
         const icono = document.getElementById('emoji-btn').getAttribute('data-icon') || 'location';
@@ -867,9 +861,7 @@ function ejecutarPlanificacion() {
         }
     }
 
-    // ==================
     // Editar
-    // ==================
     function openEditModal(id, nombre, icono) {
         document.getElementById('edit-fav-id').value = id;
         document.getElementById('edit-input-nombre').value = nombre;
@@ -963,9 +955,7 @@ function ejecutarPlanificacion() {
         }
     }
 
-    // ==================
     // Emoji Pickers
-    // ==================
     function toggleEmojiPicker() {
         document.getElementById('emoji-picker').classList.toggle('hidden');
     }

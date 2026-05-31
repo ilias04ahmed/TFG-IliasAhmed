@@ -15,7 +15,7 @@
     <div class="bg-white border rounded-xl shadow-sm overflow-hidden">
         <div class="p-4 bg-gray-50 border-b flex justify-between items-center">
             <h2 class="text-sm font-semibold text-gray-700">Todos los Reportes</h2>
-            <button onclick="loadReportes()" class="text-sm text-blue-600 hover:text-blue-800 flex items-center gap-1 font-medium transition">
+            <button onclick="loadReportes(1)" class="text-sm text-blue-600 hover:text-blue-800 flex items-center gap-1 font-medium transition">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
                 </svg>
@@ -56,11 +56,11 @@
     </div>
 </div>
 
-<div id="responder-modal" class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-xs flex items-center justify-center p-4 z-50 hidden transition-opacity duration-200">
-    <div class="bg-white rounded-xl shadow-xl max-w-md w-full overflow-hidden transform scale-95 transition-transform duration-200">
+<div id="responder-modal" class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-xs flex items-center justify-center p-4 z-50 hidden">
+    <div class="bg-white rounded-xl shadow-xl max-w-md w-full overflow-hidden">
         <div class="bg-blue-600 px-5 py-4 text-white flex justify-between items-center">
             <h3 class="text-lg font-semibold">Responder Reporte #<span id="modal-reporte-id"></span></h3>
-            <button onclick="closeModal()" class="text-white hover:text-blue-200 transition">
+            <button type="button" onclick="closeModal()" class="text-white hover:text-blue-200 transition">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
@@ -88,18 +88,18 @@
                     <div>
                         <label class="block text-xs font-medium text-gray-600 mb-1">Respuesta Rápida</label>
                         <select id="preset" class="w-full rounded border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500" onchange="applyPreset()">
-                            <option value="">(Escribir libremente)</option>
-                            <option value="Mensaje confirmado, gracias por avisarnos.">Mensaje confirmado</option>
-                            <option value="Estamos trabajando en ello, pronto estará solucionado.">Estamos trabajando en ello</option>
-                            <option value="La incidencia ha sido resuelta satisfactoriamente.">Incidencia resuelta</option>
-                            <option value="No hemos podido reproducir el problema. ¿Podrías dar más detalles?">Necesita más detalles</option>
+                            <option value="">(Escribir respuesta libre)</option>
+                            <option value="Hemos recibido tu reporte. Muchas gracias por avisarnos.">Reporte confirmado</option>
+                            <option value="Ya estamos trabajando en solucionar este problema.">En proceso</option>
+                            <option value="La incidencia ha sido resuelta con éxito.">Incidencia resuelta</option>
+                            <option value="No hemos podido replicar el error. ¿Podrías darnos más detalles?">Solicitar más detalles</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="mb-5">
                     <label class="block text-xs font-medium text-gray-600 mb-1">Mensaje de Respuesta</label>
-                    <textarea id="respuesta_admin" rows="4" class="w-full rounded border-gray-300 p-3 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500" placeholder="Escribe aquí la respuesta oficial..."></textarea>
+                    <textarea id="respuesta_admin" rows="4" class="w-full rounded border-gray-300 p-3 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500" placeholder="Escribe aquí la respuesta oficial..." required></textarea>
                 </div>
 
                 <div class="flex justify-end gap-2">
@@ -116,12 +116,12 @@
 </div>
 
 <script>
-    // API_BASE viene del header (global)
     const REPORTES_API = API_BASE + '/api/admin/reportes';
     let reportesData = [];
     let currentPage = 1;
     const limitPerPage = 15;
 
+    // Carga inicial de datos desde la API
     function loadReportes(page = 1) {
         currentPage = page;
         const tbody = document.getElementById('reportes-body');
@@ -138,8 +138,10 @@
         fetch(`${REPORTES_API}?page=${currentPage}&limit=${limitPerPage}`)
             .then(res => res.json())
             .then(data => {
+                // Soportar tanto si viene paginado como un array directo
                 reportesData = data.items || data;
                 
+                // Configurar controles de paginación si existen datos de páginas
                 if (data.total_paginas !== undefined && data.total_paginas > 1) {
                     pagControls.classList.remove('hidden');
                     document.getElementById('current-page').textContent = data.pagina;
@@ -160,12 +162,13 @@
                 renderTable();
             })
             .catch(err => {
-                console.error("Error al cargar reportes:", err);
-                tbody.innerHTML = '<tr><td colspan="5" class="px-6 py-8 text-center text-red-500 font-medium">Error al cargar reportes. Verifique que el servicio backend esté en ejecución.</td></tr>';
+                console.error("Error al obtener los reportes:", err);
+                tbody.innerHTML = '<tr><td colspan="5" class="px-6 py-8 text-center text-red-500 font-medium">Error al cargar reportes. Verifique el servidor backend.</td></tr>';
                 pagControls.classList.add('hidden');
             });
     }
 
+    // Pinta las filas de la tabla
     function renderTable() {
         const tbody = document.getElementById('reportes-body');
 
@@ -175,31 +178,43 @@
             return;
         }
 
-        tbody.innerHTML = reportesData.map(r => {
-            const fechaFormateada = new Date(r.creado_en).toLocaleString();
+        let html = '';
+        
+        reportesData.forEach(r => {
+            const fecha = new Date(r.creado_en).toLocaleString();
             
+            // Estilos dinámicos del estado
             let stateStyle = 'bg-gray-100 text-gray-700';
             if (r.estado === 'en_proceso') stateStyle = 'bg-amber-100 text-amber-800';
             if (r.estado === 'resuelto') stateStyle = 'bg-green-100 text-green-800';
 
-            const previewRespuesta = r.respuesta_admin 
-                ? (r.respuesta_admin.length > 30 ? r.respuesta_admin.substring(0, 30) + '...' : r.respuesta_admin) 
-                : '<span class="italic text-gray-400">Sin respuesta</span>';
+            // Tratamiento de la vista previa de la respuesta
+            let previewRespuesta = '<span class="italic text-gray-400">Sin respuesta</span>';
+            if (r.respuesta_admin) {
+                previewRespuesta = r.respuesta_admin.length > 30 
+                    ? r.respuesta_admin.substring(0, 30) + '...' 
+                    : r.respuesta_admin;
+            }
 
-            return `
+            // Sanitización básica para inyección de texto simple
+            const userSanitizado = limpiaTexto(r.username);
+            const msgSanitizado = limpiaTexto(r.mensaje);
+            const textoEstado = r.estado.replace('_', ' ').toUpperCase();
+
+            html += `
             <tr class="hover:bg-gray-50/60 transition">
                 <td class="px-6 py-3.5">
                     <div class="font-bold text-gray-800">#${r.id}</div>
-                    <div class="text-xs text-gray-400 mt-0.5">${fechaFormateada}</div>
+                    <div class="text-xs text-gray-400 mt-0.5">${fecha}</div>
                 </td>
-                <td class="px-6 py-3.5 font-medium text-gray-700">${escapeHTML(r.username)}</td>
+                <td class="px-6 py-3.5 font-medium text-gray-700">${userSanitizado}</td>
                 <td class="px-6 py-3.5 max-w-xs">
-                    <p class="text-xs text-gray-600 line-clamp-2" title="${escapeHTML(r.mensaje)}">${escapeHTML(r.mensaje)}</p>
-                    <div class="mt-1 text-[11px] text-gray-400">Resp: ${previewRespuesta}</div>
+                    <p class="text-xs text-gray-600 line-clamp-2" title="${msgSanitizado}">${msgSanitizado}</p>
+                    <div class="mt-1 text-[11px] text-gray-400">Resp: ${limpiaTexto(previewRespuesta)}</div>
                 </td>
                 <td class="px-6 py-3.5">
                     <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold ${stateStyle}">
-                        ${escapeHTML(r.estado.replace('_', ' ').toUpperCase())}
+                        ${textoEstado}
                     </span>
                 </td>
                 <td class="px-6 py-3.5 whitespace-nowrap">
@@ -208,9 +223,12 @@
                     </button>
                 </td>
             </tr>`;
-        }).join('');
+        });
+        
+        tbody.innerHTML = html;
     }
 
+    // Modal: Abrir y Cerrar
     function openModal(id) {
         const reporte = reportesData.find(r => r.id === id);
         if (!reporte) return;
@@ -222,23 +240,14 @@
         document.getElementById('respuesta_admin').value = reporte.respuesta_admin || '';
         document.getElementById('preset').value = '';
 
-        const modal = document.getElementById('responder-modal');
-        modal.classList.remove('hidden');
-        
-        void modal.offsetWidth;
-        modal.classList.remove('opacity-0');
-        modal.querySelector('div').classList.remove('scale-95');
+        document.getElementById('responder-modal').classList.remove('hidden');
     }
 
     function closeModal() {
-        const modal = document.getElementById('responder-modal');
-        modal.classList.add('opacity-0');
-        modal.querySelector('div').classList.add('scale-95');
-        setTimeout(() => {
-            modal.classList.add('hidden');
-        }, 200);
+        document.getElementById('responder-modal').classList.add('hidden');
     }
 
+    // Lógica de respuestas rápidas
     function applyPreset() {
         const presetVal = document.getElementById('preset').value;
         if (!presetVal) return;
@@ -248,11 +257,12 @@
         const estadoSelect = document.getElementById('estado');
         if (presetVal.includes('resuelt')) {
             estadoSelect.value = 'resuelto';
-        } else if (presetVal.includes('trabajando')) {
+        } else if (presetVal.includes('trabajando') || presetVal.includes('proceso')) {
             estadoSelect.value = 'en_proceso';
         }
     }
 
+    // Enviar el formulario al backend
     function submitRespuesta(e) {
         e.preventDefault();
         const id = document.getElementById('reporte_id').value;
@@ -266,28 +276,27 @@
         })
         .then(res => res.json())
         .then(data => {
-            if (data.status === 'ok') {
+            if (data.status === 'ok' || data.success) {
                 closeModal();
                 loadReportes(currentPage);
             } else {
-                alert('No se pudo guardar la respuesta: ' + (data.error || 'Error interno'));
+                alert('Error al guardar: ' + (data.error || 'Error desconocido'));
             }
         })
         .catch(err => {
-            console.error("Error al guardar respuesta:", err);
-            alert('Error de red al intentar conectar con el servidor.');
+            console.error("Error en la petición:", err);
+            alert('Error de conexión con el servidor.');
         });
     }
 
-    function escapeHTML(str) {
-        return (str || '').replace(/[&<>'"]/g, tag => ({
-            '&': '&amp;',
-            '<': '&lt;',
-            '>': '&gt;',
-            "'": '&#39;',
-            '"': '&quot;'
-        }[tag]));
+    // Función auxiliar simple para evitar romper el HTML
+    function limpiaTexto(str) {
+        if (!str) return '';
+        return str.toString()
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
     }
 
+    // Carga inicial
     document.addEventListener('DOMContentLoaded', () => loadReportes(1));
 </script>

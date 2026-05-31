@@ -2,7 +2,6 @@
     <h1 class="text-3xl font-bold text-gray-800 mb-6">Panel de Control</h1>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        
         <div class="bg-white border rounded-lg p-5 shadow-sm flex items-center">
             <div class="bg-blue-500 rounded-md p-3 text-white mr-4">
                 <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -11,7 +10,7 @@
             </div>
             <div>
                 <p class="text-sm font-medium text-gray-500">Autobuses Activos</p>
-                <p class="text-3xl font-semibold text-gray-900">5</p>
+                <p id="count-buses" class="text-3xl font-semibold text-gray-900">...</p>
             </div>
         </div>
 
@@ -23,10 +22,9 @@
             </div>
             <div>
                 <p class="text-sm font-medium text-gray-500">Rutas Totales</p>
-                <p class="text-3xl font-semibold text-gray-900">2</p>
+                <p id="count-rutas" class="text-3xl font-semibold text-gray-900">...</p>
             </div>
         </div>
-        
     </div>
 
     <div class="bg-white border rounded-lg shadow-sm">
@@ -59,33 +57,100 @@
         </div>
 
         <div class="border-t border-gray-100">
-            <ul class="divide-y divide-gray-100">
-                
-                <li class="px-6 py-4 hover:bg-gray-50 flex items-center justify-between">
-                    <div>
-                        <p class="text-sm font-semibold text-blue-600">BUS_01</p>
-                        <p class="text-xs text-gray-500 mt-1">Matrícula: 8899-KLS</p>
-                    </div>
-                    <div>
-                        <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
-                            En Ruta
-                        </span>
-                    </div>
-                </li>
-
-                <li class="px-6 py-4 hover:bg-gray-50 flex items-center justify-between">
-                    <div>
-                        <p class="text-sm font-semibold text-blue-600">BUS_02</p>
-                        <p class="text-xs text-gray-500 mt-1">Matrícula: 4321-BBB</p>
-                    </div>
-                    <div>
-                        <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
-                            En Ruta
-                        </span>
-                    </div>
-                </li>
-
+            <ul id="buses-list" class="divide-y divide-gray-100">
+                <li class="p-6 text-center text-gray-400">Cargando flotas...</li>
             </ul>
         </div>
     </div>
 </div>
+
+<script>
+    if (typeof window.API_BASE === 'undefined') {
+        window.API_BASE = 'http://localhost:5000';
+    }
+
+    async function loadDashboardData() {
+        const container = document.getElementById('buses-list');
+        
+        try {
+            const resRoutes = await fetch(`${window.API_BASE}/api/routes?_t=${Date.now()}`);
+            const routesData = await resRoutes.json();
+            const arrayRutas = routesData.routes || [];
+            document.getElementById('count-rutas').textContent = arrayRutas.length;
+
+            const resBuses = await fetch(`${window.API_BASE}/api/buses?_t=${Date.now()}`);
+            const rawData = await resBuses.json();
+            
+            const buses = Array.isArray(rawData) ? rawData : (rawData.data || []);
+
+            if (buses.length === 0) {
+                container.innerHTML = '<li class="p-6 text-center text-gray-500">No hay autobuses registrados</li>';
+                document.getElementById('count-buses').textContent = '0';
+                return;
+            }
+
+            let activosCount = 0;
+            let htmlContent = '';
+
+            buses.forEach(b => {
+                const enRuta = b.estado === 'En Ruta' || b.activo === true || b.activo === 1;
+                
+                if (enRuta) {
+                    activosCount++;
+                }
+
+                const estadoTexto = enRuta ? 'En Ruta' : 'Inactivo';
+                const badgeColor = enRuta ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-500';
+
+                const codigoBus = b.codigo || b.id || 'S/N';
+                const matriculaBus = b.matricula || b.plate || 'Sin matrícula';
+
+                htmlContent += `
+                <li class="px-6 py-4 hover:bg-gray-50 flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-semibold text-blue-600">${codigoBus}</p>
+                        <p class="text-xs text-gray-500 mt-1">Matrícula: ${matriculaBus}</p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <span class="px-2.5 py-1 text-xs font-semibold rounded-full ${badgeColor}">
+                            ${estadoTexto}
+                        </span>
+                        <button onclick="deleteBus('${codigoBus}')" class="p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded transition" title="Eliminar autobús">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </li>`;
+            });
+
+            container.innerHTML = htmlContent;
+            document.getElementById('count-buses').textContent = activosCount;
+
+        } catch (e) {
+            console.error(e);
+            container.innerHTML = '<li class="p-6 text-center text-red-500"> Error de conexión.</li>';
+        }
+    }
+
+    async function deleteBus(busId) {
+        if (!confirm(`¿Estás seguro de que deseas eliminar el autobús ${busId}?`)) return;
+        
+        try {
+            const res = await fetch(`${window.API_BASE}/api/buses/${busId}`, {
+                method: 'DELETE'
+            });
+            
+            if (res.ok) {
+                loadDashboardData();
+            } else {
+                alert("No se pudo eliminar el autobús.");
+            }
+        } catch (e) {
+            console.error(e);
+            alert("Error de conexión.");
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadDashboardData);
+</script>

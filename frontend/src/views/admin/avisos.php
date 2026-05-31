@@ -8,15 +8,14 @@
         <div class="px-6 py-4 border-b bg-blue-600 rounded-t-lg">
             <h2 class="text-lg font-semibold text-white" id="form-title">Nuevo Aviso</h2>
         </div>
+        
         <form id="aviso-form" class="p-6">
             <input type="hidden" id="aviso-id" value="">
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <div>
                     <label for="aviso-titulo" class="block text-sm font-medium text-gray-700 mb-1">Título *</label>
-                    <input type="text" id="aviso-titulo" required maxlength="150"
-                        class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500"
-                        placeholder="Ej: Avería en zona Tarajal">
+                    <input type="text" id="aviso-titulo" required maxlength="150" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500" placeholder="Ej: Avería en zona Tarajal">
                 </div>
 
                 <div class="grid grid-cols-2 gap-4">
@@ -40,17 +39,14 @@
 
             <div class="mb-4">
                 <label for="aviso-mensaje" class="block text-sm font-medium text-gray-700 mb-1">Mensaje *</label>
-                <textarea id="aviso-mensaje" rows="3" required
-                    class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500"
-                    placeholder="Describe el aviso con detalle..."></textarea>
+                <textarea id="aviso-mensaje" rows="3" required class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500" placeholder="Describe el aviso con detalle..."></textarea>
             </div>
 
             <div class="flex items-center space-x-3">
                 <button type="submit" class="bg-blue-600 text-white px-5 py-2 rounded-md hover:bg-blue-700 font-medium shadow-sm transition">
                     <span id="btn-submit-text">Publicar Aviso</span>
                 </button>
-                <button type="button" id="btn-cancel" onclick="cancelEdit()" style="display:none;"
-                    class="bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300 font-medium">
+                <button type="button" id="btn-cancel" onclick="cancelEdit()" style="display:none;" class="bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300 font-medium">
                     Cancelar
                 </button>
             </div>
@@ -65,20 +61,15 @@
         
         <div id="avisos-list" class="divide-y divide-gray-200">
             <div class="p-8 text-center text-gray-400">
-                <svg class="w-12 h-12 mx-auto mb-2 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
-                </svg>
                 <p>Cargando avisos...</p>
             </div>
         </div>
     </div>
     
     <div id="pagination-controls" class="bg-gray-50 px-6 py-3 border border-t-0 border-gray-200 rounded-b-lg flex items-center justify-between hidden">
-        <button id="btn-prev-page" class="px-3 py-1.5 border border-gray-300 rounded shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50">Anterior</button>
-        <span class="text-sm text-gray-700">
-            Página <span id="current-page" class="font-bold">1</span> de <span id="total-pages" class="font-bold">1</span>
-        </span>
-        <button id="btn-next-page" class="px-3 py-1.5 border border-gray-300 rounded shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50">Siguiente</button>
+        <button id="btn-prev-page" class="px-3 py-1.5 border border-gray-300 rounded text-sm text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50">Anterior</button>
+        <span class="text-sm text-gray-700">Página <span id="current-page" class="font-bold">1</span> de <span id="total-pages" class="font-bold">1</span></span>
+        <button id="btn-next-page" class="px-3 py-1.5 border border-gray-300 rounded text-sm text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50">Siguiente</button>
     </div>
 </div>
 
@@ -90,7 +81,6 @@
 </div>
 
 <script>
-    // API_BASE viene del header (global)
     let editingId = null;
     let currentPage = 1;
     const limitPerPage = 10;
@@ -107,6 +97,7 @@
             const res = await fetch(`${API_BASE}/api/routes`);
             const data = await res.json();
             const select = document.getElementById('aviso-linea');
+            
             const routes = data.routes || data;
             
             if (Array.isArray(routes)) {
@@ -118,7 +109,7 @@
                 });
             }
         } catch (e) {
-            console.error('Error cargando rutas en formulario:', e);
+            console.error('Petó la carga de líneas en el form:', e);
         }
     }
 
@@ -134,21 +125,15 @@
             const pagControls = document.getElementById('pagination-controls');
 
             if (!avisos.length && currentPage === 1) {
-                container.innerHTML = `
-                <div class="p-8 text-center text-gray-400">
-                    <svg class="w-12 h-12 mx-auto mb-2 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                    </svg>
-                    <p>No hay avisos publicados aún</p>
-                </div>`;
+                container.innerHTML = `<div class="p-8 text-center text-gray-500"><p>No hay avisos publicados aún</p></div>`;
                 countEl.textContent = '0 avisos';
                 pagControls.classList.add('hidden');
                 return;
             }
 
             countEl.textContent = data.total !== undefined 
-                ? `${data.total} aviso${data.total !== 1 ? 's' : ''}` 
-                : `${avisos.length} aviso${avisos.length !== 1 ? 's' : ''}`;
+                ? `${data.total} aviso(s)` 
+                : `${avisos.length} aviso(s)`;
 
             if (data.total_paginas !== undefined && data.total_paginas > 1) {
                 pagControls.classList.remove('hidden');
@@ -186,17 +171,16 @@
                             <p class="text-sm text-gray-600 mt-1">${escapeHtml(a.mensaje)}</p>
                             <p class="text-xs text-gray-400 mt-2">${fecha}</p>
                         </div>
+                        
                         <div class="flex items-center space-x-1 ml-4 flex-shrink-0">
-                            <button onclick="toggleAviso(${a.id}, ${a.activo})" title="${a.activo ? 'Desactivar' : 'Activar'}" class="p-2 rounded-md hover:bg-gray-100 text-gray-500">
-                                ${a.activo 
-                                    ? '<svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" /></svg>' 
-                                    : '<svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>'}
+                            <button onclick="toggleAviso(${a.id}, ${a.activo})" title="Activar/Desactivar" class="p-2 rounded-md hover:bg-gray-100 text-gray-500">
+                                ${a.activo ? '❌' : '✅'}
                             </button>
-                            <button onclick="editAviso(${a.id})" title="Editar" class="p-2 rounded-md hover:bg-blue-50 text-gray-500 hover:text-blue-600">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+                            <button onclick="editAviso(${a.id})" title="Editar" class="p-2 rounded-md hover:bg-blue-50 text-blue-500">
+                                ✏️
                             </button>
-                            <button onclick="deleteAviso(${a.id})" title="Eliminar" class="p-2 rounded-md hover:bg-red-50 text-gray-500 hover:text-red-600">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-4v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                            <button onclick="deleteAviso(${a.id})" title="Eliminar" class="p-2 rounded-md hover:bg-red-50 text-red-500">
+                                🗑️
                             </button>
                         </div>
                     </div>
@@ -204,11 +188,8 @@
             }).join('');
 
         } catch (e) {
-            console.error('Error cargando tablón:', e);
-            document.getElementById('avisos-list').innerHTML = `
-            <div class="p-8 text-center text-red-500">
-                <p>Error de conexión con la API Flask</p>
-            </div>`;
+            console.error('Error cargando la lista del tablón:', e);
+            document.getElementById('avisos-list').innerHTML = `<div class="p-8 text-center text-red-500"><p>Error conectando con la API</p></div>`;
         }
     }
 
@@ -217,6 +198,7 @@
         
         const selectLinea = document.getElementById('aviso-linea');
         const selectedLineas = Array.from(selectLinea.selectedOptions).map(opt => opt.value);
+        
         let lineasToPost = selectedLineas.includes("") || selectedLineas.length === 0 ? [null] : selectedLineas;
 
         const baseData = {
@@ -228,20 +210,21 @@
         try {
             if (editingId) {
                 baseData.activo = true;
-                baseData.linea_id = lineasToPost[0];
+                baseData.linea_id = lineasToPost[0]; 
                 
                 const res = await fetch(`${API_BASE}/api/avisos/${editingId}`, {
                     method: 'PUT',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(baseData)
                 });
+                
                 if (res.ok) {
-                    showToast('Aviso actualizado correctamente', 'success');
+                    showToast('Aviso actualizado', 'success');
                     cancelEdit();
-                    loadAvisos();
+                    loadAvisos(currentPage);
                 } else {
                     const err = await res.json();
-                    showToast(err.error || 'Error al actualizar', 'error');
+                    showToast(err.error || 'Fallo al actualizar', 'error');
                 }
             } else {
                 let successCount = 0;
@@ -254,22 +237,25 @@
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(data)
                     });
-                    if (res.ok) successCount++;
-                    else {
+                    
+                    if (res.ok) {
+                        successCount++;
+                    } else {
                         const err = await res.json();
                         errorMsg = err.error;
                     }
                 }
 
                 if (successCount > 0) {
-                    showToast(successCount > 1 ? `Se han guardado ${successCount} avisos` : 'Aviso publicado', 'success');
+                    showToast(`Se publicaron ${successCount} avisos`, 'success');
                     cancelEdit();
                     loadAvisos();
                 } else if (errorMsg) {
                     showToast(errorMsg, 'error');
                 }
             }
-        } catch (e) {
+        } catch (error) {
+            console.error('Error enviando aviso:', error);
             showToast('Error de comunicación con el servidor', 'error');
         }
     });
@@ -279,6 +265,7 @@
             const res = await fetch(`${API_BASE}/api/avisos?all=1`);
             const avisos = await res.json();
             const aviso = avisos.find(a => a.id === id);
+            
             if (!aviso) return;
 
             document.getElementById('aviso-id').value = aviso.id;
@@ -288,18 +275,19 @@
             
             const selectLinea = document.getElementById('aviso-linea');
             const lineaVal = aviso.linea_id || '';
+            
             Array.from(selectLinea.options).forEach(opt => {
                 opt.selected = (opt.value == lineaVal);
             });
 
-            document.getElementById('form-title').textContent = 'Editar Aviso existente';
+            document.getElementById('form-title').textContent = 'Editar Aviso';
             document.getElementById('btn-submit-text').textContent = 'Guardar Cambios';
             document.getElementById('btn-cancel').style.display = 'inline-block';
             editingId = id;
 
             document.getElementById('aviso-form-card').scrollIntoView({ behavior: 'smooth' });
         } catch (e) {
-            showToast('No se pudo cargar el aviso para edición', 'error');
+            showToast('No se pudo cargar el aviso', 'error');
         }
     }
 
@@ -317,6 +305,7 @@
             const res = await fetch(`${API_BASE}/api/avisos?all=1`);
             const avisos = await res.json();
             const aviso = avisos.find(a => a.id === id);
+            
             if (!aviso) return;
 
             aviso.activo = !currentlyActive;
@@ -327,24 +316,25 @@
             });
 
             if (updateRes.ok) {
-                showToast(currentlyActive ? 'Aviso desactivado' : 'Aviso activado', currentlyActive ? 'error' : 'success');
-                loadAvisos();
+                showToast(currentlyActive ? 'Aviso ocultado' : 'Aviso reactivado', 'success');
+                loadAvisos(currentPage);
             }
         } catch (e) {
-            showToast('Error al modificar el estado', 'error');
+            showToast('Fallo al cambiar estado', 'error');
         }
     }
 
     async function deleteAviso(id) {
-        if (!confirm('¿Seguro que deseas eliminar definitivamente este aviso?')) return;
+        if (!confirm('¿Seguro que te quieres cargar este aviso? No se puede deshacer.')) return;
+        
         try {
             const res = await fetch(`${API_BASE}/api/avisos/${id}`, { method: 'DELETE' });
             if (res.ok) {
-                showToast('Aviso eliminado', 'success');
-                loadAvisos();
+                showToast('Aviso borrado', 'success');
+                loadAvisos(currentPage);
             }
         } catch (e) {
-            showToast('No se pudo eliminar el aviso', 'error');
+            showToast('No se pudo borrar', 'error');
         }
     }
 
@@ -352,12 +342,8 @@
         const toast = document.getElementById('toast');
         const iconContainer = document.getElementById('toast-icon');
         
-        let iconHtml = type === 'success' 
-            ? '<svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>'
-            : '<svg class="w-5 h-5 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>';
-        
+        iconContainer.innerHTML = type === 'success' ? '✅' : '⚠️';
         document.getElementById('toast-message').textContent = message;
-        iconContainer.innerHTML = iconHtml;
         
         toast.classList.remove('translate-y-20', 'opacity-0');
         toast.classList.add('translate-y-0', 'opacity-100');
@@ -369,6 +355,7 @@
     }
 
     function escapeHtml(text) {
+        if (!text) return '';
         const div = document.createElement('div');
         div.textContent = text;
         return div.innerHTML;

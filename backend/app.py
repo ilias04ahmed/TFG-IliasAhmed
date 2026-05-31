@@ -524,29 +524,92 @@ def get_active_buses():
         try:
             with conn.cursor() as cursor:
                 cursor.execute("""
-                    SELECT DISTINCT ON (bus_id) bus_id, latitude, longitude, route_id, timestamp
-                    FROM gps_data
-                    ORDER BY bus_id, timestamp DESC
+                    SELECT a.codigo, a.matricula, g.latitude, g.longitude, g.route_id, g.timestamp
+                    FROM autobuses a
+                    LEFT JOIN (
+                        SELECT DISTINCT ON (bus_id) bus_id, latitude, longitude, route_id, timestamp
+                        FROM gps_data
+                        ORDER BY bus_id, timestamp DESC
+                    ) g ON a.codigo = g.bus_id
                 """)
                 rows = cursor.fetchall()
             
-            result = [
-                {
+            result = []
+            for r in rows:
+                has_gps = r[2] is not None
+                result.append({
                     "id": r[0],
-                    "lat": float(r[1]),
-                    "lon": float(r[2]),
-                    "route_id": r[3],
-                    "last_update": str(r[4])
-                }
-                for r in rows
-            ]
+                    "codigo": r[0],
+                    "matricula": r[1] or "Sin matrícula",
+                    "lat": float(r[2]) if r[2] else None,
+                    "lon": float(r[3]) if r[3] else None,
+                    "route_id": r[4],
+                    "last_update": str(r[5]) if r[5] else "Nunca",
+                    "estado": "En Ruta" if has_gps else "Inactivo",
+                    "activo": has_gps
+                })
             return jsonify(result)
         except Exception as e:
-            print(f"DB Read Error: {e}")
+            print(f"Error DB GET: {e}", flush=True)
             return jsonify(list(mem_buses.values()))
-    else:
-        return jsonify(list(mem_buses.values()))
+    return jsonify(list(mem_buses.values()))
 
+@app.route("/api/buses/<bus_id>", methods=["DELETE", "OPTIONS"])
+def delete_bus(bus_id):
+    if request.method == "OPTIONS":
+        return jsonify({"status": "ok"}), 200
+        
+    if use_db and conn:
+        try:
+            with conn.cursor() as cursor:
+                cursor.execute("DELETE FROM autobuses WHERE codigo = %s", (bus_id,))
+                conn.commit()
+        except Exception as e:
+            print(f"Error DB DELETE: {e}", flush=True)
+            return jsonify({"error": "Error interno"}), 500
+            
+    if bus_id in mem_buses:
+        del mem_buses[bus_id]
+        
+    return jsonify({"success": True}), 200
+
+@app.route("/api/buses", methods=["POST", "OPTIONS"])
+def add_bus():
+    if request.method == "OPTIONS":
+        return jsonify({"status": "ok"}), 200
+        
+    data = request.json or {}
+    codigo = data.get('codigo')
+    matricula = data.get('matricula', 'Sin matrícula')
+    
+    if not codigo:
+        return jsonify({"error": "Falta codigo"}), 400
+        
+    if use_db and conn:
+        try:
+            with conn.cursor() as cursor:
+                cursor.execute(
+                    "INSERT INTO autobuses (codigo, matricula) VALUES (%s, %s)", 
+                    (codigo, matricula)
+                )
+                conn.commit()
+            return jsonify({"success": True}), 201
+        except Exception as e:
+            print(f"Error DB INSERT: {e}", flush=True)
+            return jsonify({"error": str(e)}), 500
+    
+    mem_buses[codigo] = {
+        "id": codigo,
+        "codigo": codigo,
+        "matricula": matricula,
+        "lat": None,
+        "lon": None,
+        "route_id": None,
+        "last_update": None,
+        "estado": "Inactivo",
+        "activo": False
+    }
+    return jsonify({"success": True}), 201
 
 @app.route("/api/last", methods=["GET"])
 def get_last_positions():
