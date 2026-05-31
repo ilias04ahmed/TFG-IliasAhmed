@@ -1,0 +1,70 @@
+/* Animaciones de la página de rutas favoritas */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fav-float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.animate-fav-float {
+    animation: fav-float 4s ease-in-out infinite;
+}
+
+/* Notificaciones */
+.toast-notif {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 100;
+    color: white;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transform: translateY(16px);
+    opacity: 0;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease-out;
+}
+
+.toast-notif.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.toast-notif--success {
+    background-color: #22c55e;
+}
+
+.toast-notif--error {
+    background-color: #ef4444;
+}
+
+.toast-notif--info {
+    background-color: #3b82f6;
+}
+

@@ -1,0 +1,1972 @@
+{
+    "version": 0.6,
+    "generator": "Overpass API 0.7.62.11 87bfad18",
+    "osm3s": {
+        "timestamp_osm_base": "2026-05-28T17:53:17Z",
+        "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+    },
+    "elements": [
+        {
+            "type": "node",
+            "id": 3914654431,
+            "lat": 35.8883812,
+            "lon": -5.3126243,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Plaza de la Constitución",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta, S. A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform",
+                "shelter": "yes",
+                "type": "public_transport"
+            }
+        },
+        {
+            "type": "node",
+            "id": 3915395058,
+            "lat": 35.8862685,
+            "lon": -5.3046321,
+            "tags": {
+                "bus": "yes",
+                "fixme": "Un poco lejos como para llamarse Batería del Pintor. Probablemente no sea.",
+                "highway": "bus_stop",
+                "name": "Batería del Pintor",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform",
+                "type": "public_transport"
+            }
+        },
+        {
+            "type": "node",
+            "id": 3915395059,
+            "lat": 35.8869243,
+            "lon": -5.3021855,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "C/ Sevilla",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform",
+                "type": "public_transport"
+            }
+        },
+        {
+            "type": "node",
+            "id": 3915395520,
+            "lat": 35.8912352,
+            "lon": -5.2974991,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform",
+                "type": "public_transport"
+            }
+        },
+        {
+            "type": "node",
+            "id": 3915396023,
+            "lat": 35.8919838,
+            "lon": -5.2985073,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Casa Lola - Campus Universitario",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform",
+                "type": "public_transport"
+            }
+        },
+        {
+            "type": "node",
+            "id": 3915396024,
+            "lat": 35.8921591,
+            "lon": -5.2991657,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "public_transport": "platform",
+                "type": "public_transport"
+            }
+        },
+        {
+            "type": "node",
+            "id": 3915396025,
+            "lat": 35.8955052,
+            "lon": -5.299512,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "San Amaro - Tanatorio",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform",
+                "type": "public_transport"
+            }
+        },
+        {
+            "type": "node",
+            "id": 3915396027,
+            "lat": 35.8974349,
+            "lon": -5.298409,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Parque de San Amaro",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform",
+                "shelter": "no",
+                "type": "public_transport"
+            }
+        },
+        {
+            "type": "node",
+            "id": 3916540873,
+            "lat": 35.8850201,
+            "lon": -5.3395567,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Claudio Vázquez - frente Matadero Municipal",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform",
+                "shelter": "yes",
+                "type": "public_transport"
+            }
+        },
+        {
+            "type": "node",
+            "id": 4875948585,
+            "lat": 35.8908835,
+            "lon": -5.3238269,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Avenida de España - Colegio San Daniel",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform",
+                "shelter": "yes",
+                "type": "public_transport"
+            }
+        },
+        {
+            "type": "node",
+            "id": 4875948586,
+            "lat": 35.8918849,
+            "lon": -5.3256639,
+            "tags": {
+                "amenity": "bus_stop",
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Sardinero - BBVA",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform",
+                "shelter": "yes",
+                "type": "public_transport"
+            }
+        },
+        {
+            "type": "node",
+            "id": 4875948587,
+            "lat": 35.8917025,
+            "lon": -5.3246336,
+            "tags": {
+                "amenity": "bus_stop",
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Sardinero - Mercadona",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform",
+                "shelter": "yes",
+                "type": "public_transport"
+            }
+        },
+        {
+            "type": "node",
+            "id": 6435913386,
+            "lat": 35.8729835,
+            "lon": -5.343142,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Frontera - cambio de sentido",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform",
+                "type": "public_transport"
+            }
+        },
+        {
+            "type": "node",
+            "id": 8095088896,
+            "lat": 35.8881828,
+            "lon": -5.3130784,
+            "tags": {
+                "bench": "yes",
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Plaza de la Constitución",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform",
+                "shelter": "yes",
+                "type": "public_transport"
+            }
+        },
+        {
+            "type": "node",
+            "id": 8095101997,
+            "lat": 35.8889504,
+            "lon": -5.3304558,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Barriada Zurrón",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform",
+                "shelter": "yes",
+                "type": "public_transport"
+            }
+        },
+        {
+            "type": "node",
+            "id": 8132405603,
+            "lat": 35.8817977,
+            "lon": -5.3446472,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Rotonda Colegio Reina Sofía",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform",
+                "shelter": "yes",
+                "type": "public_transport"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12645863573,
+            "lat": 35.8875184,
+            "lon": -5.3069574,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Calle Real - La Campana",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform",
+                "shelter": "no"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12645863574,
+            "lat": 35.8889999,
+            "lon": -5.3040023,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Calle Real - Lope de Vega",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12645863575,
+            "lat": 35.8907693,
+            "lon": -5.3019588,
+            "tags": {
+                "bench": "no",
+                "bin": "no",
+                "bus": "yes",
+                "highway": "bus_stop",
+                "lit": "yes",
+                "name": "Calle Real - Electrónica Valero",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform",
+                "shelter": "no",
+                "tactile_paving": "no"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12645863576,
+            "lat": 35.8922019,
+            "lon": -5.3005602,
+            "tags": {
+                "bench": "no",
+                "bin": "no",
+                "bus": "yes",
+                "covered": "no",
+                "highway": "bus_stop",
+                "lit": "yes",
+                "name": "Juan I de Portugal",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform",
+                "shelter": "no",
+                "sign": "yes",
+                "tactile_paving": "no"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12645863578,
+            "lat": 35.8924737,
+            "lon": -5.2998488,
+            "tags": {
+                "bus": "yes",
+                "fixme": "Ubicación exacta?",
+                "highway": "bus_stop",
+                "name": "Cruz Roja",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12645863579,
+            "lat": 35.8928119,
+            "lon": -5.2996516,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Asamblea Cruz Roja - Maresco",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12645863581,
+            "lat": 35.8912431,
+            "lon": -5.2979809,
+            "tags": {
+                "bench": "yes",
+                "bin": "yes",
+                "bus": "yes",
+                "highway": "bus_stop",
+                "lit": "yes",
+                "name": "Pozo Rayo (Campus Universitario)",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform",
+                "shelter": "yes",
+                "tactile_paving": "no"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12645863582,
+            "lat": 35.8907736,
+            "lon": -5.2978062,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Escuelas Prácticas",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform",
+                "shelter": "yes"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12645863583,
+            "lat": 35.8910537,
+            "lon": -5.2973342,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Escuelas Prácticas",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform",
+                "shelter": "no"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12645863584,
+            "lat": 35.8894548,
+            "lon": -5.2993429,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Recinto Sur - Depósito",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform",
+                "shelter": "yes"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12645863585,
+            "lat": 35.8884886,
+            "lon": -5.3003017,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Recinto Sur - Hostal Cateto",
+                "public_transport": "platform",
+                "shelter": "no"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12645863586,
+            "lat": 35.88662,
+            "lon": -5.3032479,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Recinto Sur - Local Social",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform",
+                "shelter": "yes"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12645863587,
+            "lat": 35.8865956,
+            "lon": -5.3029683,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Recinto Sur - Local Social",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12645863590,
+            "lat": 35.8868425,
+            "lon": -5.3021692,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "C/ Sevilla",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12645863595,
+            "lat": 35.8922996,
+            "lon": -5.296892,
+            "tags": {
+                "bus": "yes",
+                "fixme": "Ubicación exacta",
+                "highway": "bus_stop",
+                "name": "Sarchal - Urbanización Monte Hacho",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12645863599,
+            "lat": 35.8908969,
+            "lon": -5.2918322,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Sarchal - Rotonda de la Virgen",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform",
+                "shelter": "yes"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12646032423,
+            "lat": 35.8907113,
+            "lon": -5.2962247,
+            "tags": {
+                "bus": "yes",
+                "fixme": "Ubicación?",
+                "highway": "bus_stop",
+                "name": "Sarchal - Caminito de Ronda",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12646032424,
+            "lat": 35.895582,
+            "lon": -5.2995832,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "San Amaro - Tanatorio",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12647449359,
+            "lat": 35.8978824,
+            "lon": -5.298683,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Parque de San Amaro",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform",
+                "shelter": "yes"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12647449362,
+            "lat": 35.9004585,
+            "lon": -5.2982887,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "San Amaro - Bolera",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform",
+                "shelter": "yes"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12647449363,
+            "lat": 35.9039619,
+            "lon": -5.2892317,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Cementerio",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform",
+                "shelter": "yes"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12647449388,
+            "lat": 35.900279,
+            "lon": -5.2982108,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "San Amaro - Acceso Escalera",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12647449389,
+            "lat": 35.8930973,
+            "lon": -5.3008965,
+            "tags": {
+                "bench": "yes",
+                "bin": "yes",
+                "bus": "yes",
+                "highway": "bus_stop",
+                "lit": "yes",
+                "name": "Antiguo Hospital - Cruz Roja",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform",
+                "shelter": "yes",
+                "tactile_paving": "yes"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12647449390,
+            "lat": 35.8914476,
+            "lon": -5.303597,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Marina Española - Patio Páramo",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform",
+                "shelter": "yes"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12647449391,
+            "lat": 35.8912832,
+            "lon": -5.3036006,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Patio Páramo",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12647449392,
+            "lat": 35.8887915,
+            "lon": -5.309978,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Marina Española - Gobierno Militar",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12647449393,
+            "lat": 35.8888347,
+            "lon": -5.3092466,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Marina Española - Millán Astray",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12647449394,
+            "lat": 35.8899675,
+            "lon": -5.3066392,
+            "tags": {
+                "bus": "yes",
+                "fixme": "Ubicación exacta?",
+                "highway": "bus_stop",
+                "name": "Baños Árabes",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12648449349,
+            "lat": 35.889755,
+            "lon": -5.3217025,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Avenida de España - Parque Argentina",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform",
+                "shelter": "yes"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12648449352,
+            "lat": 35.8905083,
+            "lon": -5.3294877,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Avenida Ejército Español",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform",
+                "shelter": "yes"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12648449353,
+            "lat": 35.8902425,
+            "lon": -5.3295386,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Avenida Ejército Español",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12648449357,
+            "lat": 35.8891302,
+            "lon": -5.3208686,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Avenida de España - Bar Noray",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform",
+                "shelter": "yes"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12648449358,
+            "lat": 35.8874734,
+            "lon": -5.3170395,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Avenida Martínez Catena - Club Natación Caballa",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform",
+                "shelter": "no"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12648449359,
+            "lat": 35.8928219,
+            "lon": -5.3281591,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Avenida General Muslera (Frente a Centro Comercial)",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform",
+                "shelter": "no"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12648449360,
+            "lat": 35.8933452,
+            "lon": -5.32936,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Centro Comercial Carrefour",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform",
+                "shelter": "no"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12648449361,
+            "lat": 35.8902506,
+            "lon": -5.3243982,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Avenida de Otero - Pisos Militares",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12648449362,
+            "lat": 35.8887963,
+            "lon": -5.3268499,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Manzanera - Mutua de Ceuta",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform",
+                "shelter": "yes"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12648449370,
+            "lat": 35.8871556,
+            "lon": -5.3268661,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Hogar del Jubilado",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform",
+                "shelter": "yes"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12648449371,
+            "lat": 35.8881196,
+            "lon": -5.3247074,
+            "tags": {
+                "bus": "yes",
+                "fixme": "Ubicación exacta?",
+                "highway": "bus_stop",
+                "name": "Avenida de Barcelona",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12650160273,
+            "lat": 35.8850318,
+            "lon": -5.3319262,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Teniente Coronel Gautier - Mercado de San José",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12650160274,
+            "lat": 35.8885845,
+            "lon": -5.3335438,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Avenida Lisboa - frente a Persianas Rodríguez",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12650160276,
+            "lat": 35.8898383,
+            "lon": -5.3336561,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Avenida Lisboa - frente a pisos San Daniel",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12650160278,
+            "lat": 35.8936131,
+            "lon": -5.3307305,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Barriada Villajovita - frente a Bar Lusitano",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform",
+                "shelter": "yes"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12650160279,
+            "lat": 35.8936321,
+            "lon": -5.332289,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Barriada Villajovita",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform",
+                "shelter": "yes"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12650160280,
+            "lat": 35.8898337,
+            "lon": -5.3337814,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Avenida Lisboa - San Daniel",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12650160282,
+            "lat": 35.8915891,
+            "lon": -5.3339109,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Avenida Lisboa - Barriada Loma del Pez",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform",
+                "shelter": "yes"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12650160283,
+            "lat": 35.8885541,
+            "lon": -5.3336662,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Avenida Lisboa - Persianas Rodríguez",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12650160284,
+            "lat": 35.8849412,
+            "lon": -5.3307757,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Teniente Coronel Gautier - Antiguo Banco Santander",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform",
+                "shelter": "yes"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12650160285,
+            "lat": 35.8840997,
+            "lon": -5.3271843,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Cruce del Morro",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform",
+                "shelter": "yes"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12650160287,
+            "lat": 35.8854687,
+            "lon": -5.3251876,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Avenida de África - Mezquita",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12650160289,
+            "lat": 35.8867952,
+            "lon": -5.3231705,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Instituto Siete Colinas",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12650825146,
+            "lat": 35.8886597,
+            "lon": -5.3220404,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Puertas del Campo",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12650825147,
+            "lat": 35.8873816,
+            "lon": -5.3230016,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Avenida de África - CEIP Ciudad de Ceuta",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12650825148,
+            "lat": 35.8856286,
+            "lon": -5.3252387,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Avenida de África - Colegio Juan Morejón",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12650825149,
+            "lat": 35.8835099,
+            "lon": -5.3280824,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Avenida Reyes Católicos - Nueva Galería",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12650825154,
+            "lat": 35.8816927,
+            "lon": -5.3288022,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Barriada O'Donnell - Hospital Militar",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12650825155,
+            "lat": 35.8807191,
+            "lon": -5.3281074,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Barriada O'Donnell - General Carvajal",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12650825156,
+            "lat": 35.8795737,
+            "lon": -5.3281831,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Barriada Juan XXIII",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform",
+                "shelter": "yes"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12650825157,
+            "lat": 35.8795034,
+            "lon": -5.3313779,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Polideportivo Díaz Flor",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12650825158,
+            "lat": 35.8807249,
+            "lon": -5.3348293,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Rotonda Mercadona",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12650825159,
+            "lat": 35.8824778,
+            "lon": -5.3395301,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Cementerio Musulmán",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12650825160,
+            "lat": 35.8823551,
+            "lon": -5.3419573,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Avenida Cadi Iyad - Pisos Verdes",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12650825164,
+            "lat": 35.8798636,
+            "lon": -5.3396304,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Loma Colmenar - Pisos de colores",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12652599270,
+            "lat": 35.881146,
+            "lon": -5.3410255,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Hospital Universitario",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform",
+                "shelter": "yes"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12652599271,
+            "lat": 35.8812562,
+            "lon": -5.3433964,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Doctora Soraya",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform",
+                "shelter": "yes"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12652599283,
+            "lat": 35.8817657,
+            "lon": -5.3471357,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Rotonda acceso Príncipe Alfonso",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform",
+                "shelter": "yes"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12652599284,
+            "lat": 35.8799517,
+            "lon": -5.3475236,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Príncipe Alfonso - Farmacia",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform",
+                "shelter": "yes"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12652599286,
+            "lat": 35.8786945,
+            "lon": -5.3463858,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Príncipe Alfonso - C/ San Daniel",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform",
+                "shelter": "yes"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12652599288,
+            "lat": 35.8774352,
+            "lon": -5.3455113,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Príncipe Alfonso - Mojito",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12652615131,
+            "lat": 35.8754041,
+            "lon": -5.3457024,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Príncipe Alfonso - Lavadero Ismael",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12652615132,
+            "lat": 35.8741157,
+            "lon": -5.3449296,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Príncipe Felipe",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12652615133,
+            "lat": 35.8772683,
+            "lon": -5.3410606,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Avenida Cadi Iyad - Arcos Quebrados",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12652615135,
+            "lat": 35.8816578,
+            "lon": -5.3402212,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Avenida Cadi Iyad - frente a Pisos Verdes",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12652615136,
+            "lat": 35.8823747,
+            "lon": -5.3395946,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Avenida Doctor Abdelkrim - Cementerio Musulmán",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12652615137,
+            "lat": 35.8803388,
+            "lon": -5.3355088,
+            "tags": {
+                "bus": "yes",
+                "fixme": "Ubicación?",
+                "highway": "bus_stop",
+                "name": "Frente a Supermercado Mercadona",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12652615138,
+            "lat": 35.8805521,
+            "lon": -5.3330633,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Avenida Reyes Católicos - Miramar Bajo",
+                "public_transport": "platform",
+                "shelter": "yes"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12652615141,
+            "lat": 35.8812277,
+            "lon": -5.3324051,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Avenida Reyes Católicos - Miramar Alto",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12652615142,
+            "lat": 35.8817405,
+            "lon": -5.3305206,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Avenida Reyes Católicos - Pinturas Dris",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12652615147,
+            "lat": 35.8827701,
+            "lon": -5.3285447,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Avenida Reyes Católicos - El Gallo",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12652615148,
+            "lat": 35.8813792,
+            "lon": -5.3446438,
+            "tags": {
+                "bus": "yes",
+                "fixme": "Ubicación?",
+                "highway": "bus_stop",
+                "name": "Rotonda Colegio Reina Sofía - Polideportivo",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12652615149,
+            "lat": 35.8804705,
+            "lon": -5.3434145,
+            "tags": {
+                "bus": "yes",
+                "fixme": "Ubicación?",
+                "highway": "bus_stop",
+                "name": "Avenida Cadi Iyad - Pisos Blancos",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12652615150,
+            "lat": 35.8800012,
+            "lon": -5.3400993,
+            "tags": {
+                "bus": "yes",
+                "fixme": "Ubicación?",
+                "highway": "bus_stop",
+                "name": "C/ Doctora Soraya - Embolsamiento",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12652615151,
+            "lat": 35.8772401,
+            "lon": -5.34119,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Arcos Quebrados",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12652615152,
+            "lat": 35.873687,
+            "lon": -5.3443358,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Príncipe Felipe - Antiguo Ambulatorio",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform",
+                "shelter": "yes"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12652615153,
+            "lat": 35.8820534,
+            "lon": -5.3302971,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Avenida Reyes Católicos - Pinturas Dris",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12652615154,
+            "lat": 35.8809022,
+            "lon": -5.3327282,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Avenida Reyes Católicos - Miramar Alto",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12652615155,
+            "lat": 35.880719,
+            "lon": -5.3339377,
+            "tags": {
+                "bus": "yes",
+                "fixme": "Ubicación exacta?",
+                "highway": "bus_stop",
+                "name": "Avenida Reyes Católicos - Miramar Bajo",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12654094150,
+            "lat": 35.8942206,
+            "lon": -5.3364658,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Playa Benítez",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12654094151,
+            "lat": 35.8959333,
+            "lon": -5.3392006,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Playa Benítez - Casa Canca",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12654094152,
+            "lat": 35.8995046,
+            "lon": -5.343691,
+            "tags": {
+                "bus": "yes",
+                "fixme": "Ubicación?",
+                "highway": "bus_stop",
+                "name": "Calamocarro - CETI",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12654094167,
+            "lat": 35.8962274,
+            "lon": -5.3404439,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Playa Benítez - Casa Canca",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform",
+                "shelter": "yes"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12654094168,
+            "lat": 35.8943526,
+            "lon": -5.3368331,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Playa Benítez",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12655756128,
+            "lat": 35.8857818,
+            "lon": -5.3273036,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "General Bada Requena",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12655756129,
+            "lat": 35.8853419,
+            "lon": -5.3365892,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Claudio Vázquez - Área Menores",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12655756131,
+            "lat": 35.8853094,
+            "lon": -5.3443748,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Claudio Vázquez - Escalera Erquicia",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform",
+                "shelter": "yes"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12655756133,
+            "lat": 35.885982,
+            "lon": -5.3451625,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Tejar de Ingenieros",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform",
+                "shelter": "yes"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12655756134,
+            "lat": 35.8861818,
+            "lon": -5.343528,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Interior Barriada Erquicia",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12655756135,
+            "lat": 35.8861881,
+            "lon": -5.3422709,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Juan Carlos I - Estatua",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12655756136,
+            "lat": 35.8867371,
+            "lon": -5.3416395,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Juan Carlos I - cambio de sentido",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform",
+                "shelter": "yes"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12655756137,
+            "lat": 35.8848901,
+            "lon": -5.3394871,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Claudio Vázquez - Edificio La Reina",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12655756138,
+            "lat": 35.8853836,
+            "lon": -5.3350694,
+            "tags": {
+                "bus": "yes",
+                "fixme": "Ubicación exacta",
+                "highway": "bus_stop",
+                "name": "Claudio Vázquez - Depósitos ACEMSA",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12655756139,
+            "lat": 35.8851998,
+            "lon": -5.3332245,
+            "tags": {
+                "bus": "yes",
+                "fixme": "Ubicación exacta",
+                "highway": "bus_stop",
+                "name": "Teniente Coronel Gautier - frente Iglesia de San José",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12657593209,
+            "lat": 35.8850955,
+            "lon": -5.3428579,
+            "tags": {
+                "bus": "yes",
+                "fixme": "Ubicación exacta",
+                "highway": "bus_stop",
+                "name": "Claudio Vázquez - Mezquita Sidi Embarek",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12658386771,
+            "lat": 35.8847539,
+            "lon": -5.3440513,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Cruce Claudio Vázquez - Príncipe Alfonso",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12660930475,
+            "lat": 35.8891755,
+            "lon": -5.3416016,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Pista de Atletismo",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12660930476,
+            "lat": 35.8892195,
+            "lon": -5.3413822,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Pista de Atletismo",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12660930482,
+            "lat": 35.8911195,
+            "lon": -5.3430732,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Cortijo Moreno",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12660930485,
+            "lat": 35.8846042,
+            "lon": -5.3608465,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Carretera Loma Mendizábal - Acceso Centro Penitenciario",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12660930486,
+            "lat": 35.8845989,
+            "lon": -5.3606065,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Carretera Loma Mendizábal - Acceso Centro Penitenciario",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12660930487,
+            "lat": 35.879506,
+            "lon": -5.357719,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Centro Penitenciario - cambio de sentido",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12660930488,
+            "lat": 35.8848324,
+            "lon": -5.3547861,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Cuartel Serrallo",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12662806131,
+            "lat": 35.8849413,
+            "lon": -5.3546919,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Subida Serrallo - Cuartel Serrallo",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12662806132,
+            "lat": 35.8844478,
+            "lon": -5.3573938,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Parada Contreras",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12662806133,
+            "lat": 35.886109,
+            "lon": -5.3505081,
+            "tags": {
+                "bus": "yes",
+                "fixme": "Parece haber un error en el horario, creo que intercambiados el Cuartel Serrallo y el de la Legión",
+                "highway": "bus_stop",
+                "name": "Cuartel de la Legión",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVICESA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12697009413,
+            "lat": 35.8946131,
+            "lon": -5.3272384,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Avenida España - Colegio J.O.P",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12697009414,
+            "lat": 35.8946726,
+            "lon": -5.3244539,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Muelle Cañonero Dato - Puntilla",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12697009417,
+            "lat": 35.8931703,
+            "lon": -5.3223893,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Muelle Cañonero Dato - Dia",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12697009419,
+            "lat": 35.8911782,
+            "lon": -5.3190128,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Muelle Cañonero Dato - Lidl",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform"
+            }
+        },
+        {
+            "type": "node",
+            "id": 12697009420,
+            "lat": 35.8870884,
+            "lon": -5.3141326,
+            "tags": {
+                "bus": "yes",
+                "highway": "bus_stop",
+                "name": "Calle Independencia",
+                "operator": "Aparcamientos Municipales y Gestión Vial de Ceuta S.A.",
+                "operator:short": "AMGEVISA",
+                "public_transport": "platform"
+            }
+        }
+    ]
+}

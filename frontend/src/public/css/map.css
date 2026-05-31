@@ -1,0 +1,176 @@
+.custom-tooltip {
+    background: white !important;
+    border: none !important;
+    border-radius: 8px !important;
+    padding: 6px 12px !important;
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    color: #1f2937 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12) !important;
+}
+
+.custom-tooltip::before {
+    border-top-color: white !important;
+}
+
+/* Popups del mapa */
+.leaflet-popup-content-wrapper {
+    border-radius: 12px !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+    border: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+.leaflet-popup-tip {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Ocultar panel de depuración */
+#debug-panel {
+    display: none !important;
+}
+
+/* Scrollbar de la lista de rutas */
+#routes-list-container::-webkit-scrollbar {
+    width: 4px;
+}
+
+#routes-list-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#routes-list-container::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 999px;
+}
+
+/* Botones de zoom de Leaflet */
+.leaflet-control-zoom a {
+    border-radius: 10px !important;
+    width: 36px !important;
+    height: 36px !important;
+    line-height: 36px !important;
+    font-size: 16px !important;
+    border: none !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    margin-bottom: 4px !important;
+}
+
+.leaflet-control-zoom {
+    border: none !important;
+    border-radius: 12px !important;
+    overflow: hidden;
+}
+
+/* Iconos de Autobús */
+.bus-marker-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid white;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bus-marker-icon:hover {
+    transform: scale(1.2) !important;
+}
+
+/* Iconos de Paradas */
+.stop-marker-icon-global {
+    background: white;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2.5px solid #94a3b8;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.stop-marker-icon-global:hover {
+    transform: scale(1.6) !important;
+    border-color: #3b82f6 !important;
+}
+
+.stop-marker-icon-route {
+    background: white;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease;
+    border: 3px solid; /* color dinámico inyectado en el style de borde */
+}
+
+.stop-marker-icon-route:hover {
+    transform: scale(1.5) !important;
+}
+
+/* Popups Semánticos del Mapa */
+.stop-popup {
+    text-align: center;
+    padding: 4px;
+}
+
+.stop-popup__name {
+    font-weight: 700;
+    font-size: 13px;
+    color: #1f2937;
+    margin-bottom: 4px;
+}
+
+.stop-popup__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    border-radius: 20px;
+    padding: 3px 10px;
+}
+
+.stop-popup__badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.stop-popup__badge-text {
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.global-stop-popup {
+    text-align: center;
+    padding: 4px;
+}
+
+.global-stop-popup__name {
+    font-weight: 700;
+    font-size: 13px;
+    color: #1f2937;
+}
+
+.global-stop-popup__sub {
+    font-size: 11px;
+    color: #94a3b8;
+    margin-top: 2px;
+}
+
+.bus-popup {
+    text-align: center;
+    padding: 4px;
+}
+
+.bus-popup__title {
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.bus-popup__sub {
+    font-size: 12px;
+    color: #6b7280;
+    margin-top: 2px;
+}
+
