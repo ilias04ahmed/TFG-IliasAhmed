@@ -9,7 +9,7 @@ services:
     volumes:
       - ./frontend/src:/var/www/html
     env_file:
-      - .env.example
+      - .env.ejemplo
     environment:
       DATABASE_HOST: ${DATABASE_HOST}
       DATABASE_NAME: ${DATABASE_NAME}
@@ -26,7 +26,7 @@ services:
     volumes:
       - ./backend:/app
     env_file:
-      - .env.example
+      - .env.ejemplo
     environment:
       DATABASE_HOST: ${DATABASE_HOST}
       DATABASE_NAME: ${DATABASE_NAME}
@@ -38,7 +38,7 @@ services:
     container_name: postgres_gps
     restart: always
     env_file:
-      - .env.example
+      - .env.ejemplo
     environment:
       POSTGRES_DB: ${DATABASE_NAME}
       POSTGRES_USER: ${DATABASE_USER}
