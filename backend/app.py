@@ -176,12 +176,12 @@ def connect_db():
             }
             predictor = TravelTimePredictor(db_config)
             
-            # --- AQUÍ ESTÁ EL ARREGLO ---
-            # Usamos hasattr() para evitar el error de "object has no attribute"
+            # aquí tengo el arreglo
+            # Uso hasattr() para evitar el error de "object has no attribute"
             if hasattr(predictor, 'model_path') and not os.path.exists(predictor.model_path):
                  print("Modelo ausente. Se entrenará al recibir datos.")
             print("TravelTimePredictor OK", flush=True)
-            # ----------------------------
+        
                  
     except Exception as e:
         print(f"Error conexion BD (Fallback In-Memory): {e}")
