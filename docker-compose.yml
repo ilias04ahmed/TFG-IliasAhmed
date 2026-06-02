@@ -7,7 +7,7 @@ services:
     depends_on:
       - db
     volumes:
-      - ./frontend/src:/var/www/html
+      - ./frontend/src:/var/www/html:ro
     env_file:
       - .env.ejemplo
 
@@ -19,7 +19,7 @@ services:
     depends_on:
       - db
     volumes:
-      - ./backend:/app
+      - ./backend:/app:ro
     env_file:
       - .env.ejemplo
 
