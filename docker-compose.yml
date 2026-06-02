@@ -1,6 +1,7 @@
 services:
   web:
-    build: ./frontend
+    build:
+      context: ./frontend
     ports:
       - "80:80"
     depends_on:
@@ -11,7 +12,8 @@ services:
       - .env.ejemplo
 
   api:
-    build: ./backend
+    build:
+      context: ./backend
     ports:
       - "5000:5000"
     depends_on:
@@ -26,9 +28,9 @@ services:
     container_name: postgres_gps
     restart: always
     environment:
-      - POSTGRES_DB=base_datos
-      - POSTGRES_USER=usuario
-      - POSTGRES_PASSWORD=contraseña
+      POSTGRES_DB: base_datos
+      POSTGRES_USER: usuario
+      POSTGRES_PASSWORD: contraseña
     volumes:
       - pgdata:/var/lib/postgresql/data
       - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
