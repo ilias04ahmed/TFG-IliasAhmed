@@ -21,3 +21,5 @@ RUN echo '<Directory ${APACHE_DOCUMENT_ROOT}>' >> /etc/apache2/apache2.conf && \
 
 
 WORKDIR /var/www/html
+
+COPY . .
