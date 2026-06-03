@@ -20,7 +20,9 @@
             </div>
             <div>
                 <label for="add-parada" class="block text-xs font-medium text-gray-600 mb-1">Parada</label>
-                <input id="add-parada" type="text" placeholder="Ej: Plaza Constitución" class="w-full rounded border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+                <select id="add-parada" class="w-full rounded border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+                    <option value="">Cargando paradas...</option>
+                </select>
             </div>
             <div>
                 <label for="add-sentido" class="block text-xs font-medium text-gray-600 mb-1">Sentido</label>
@@ -120,7 +122,7 @@
             </div>
             <div class="col-span-2">
                 <label for="edit-parada" class="block text-xs font-medium text-gray-600 mb-1">Parada</label>
-                <input id="edit-parada" type="text" class="w-full rounded border-gray-300 px-3 py-2 text-sm">
+                <select id="edit-parada" class="w-full rounded border-gray-300 px-3 py-2 text-sm"></select>
             </div>
             <div>
                 <label for="edit-dia" class="block text-xs font-medium text-gray-600 mb-1">Día</label>
@@ -154,25 +156,29 @@
 
 <script>
     let lineasData = [];
+    let paradasData = [];
 
     async function init() {
         try {
-            const res = await fetch(`${API_BASE}/api/horarios/lineas`);
-            if (res.ok) lineasData = await res.json();
+            const res = await fetch(`${API_BASE}/api/routes`);
+            const data = await res.json();
+            lineasData = Array.isArray(data) ? data : (data.routes || []);
         } catch (e) { 
-            console.warn("Ruta primaria fallida, intentando fallback...", e);
+            console.warn("Error cargando rutas principales, intentando endpoint alternativo...", e);
+            try {
+                const res = await fetch(`${API_BASE}/api/horarios/lineas`);
+                if (res.ok) lineasData = await res.json();
+            } catch (err) {
+                console.error("No se pudieron cargar las líneas", err);
+            }
         }
 
-        if (!lineasData || !lineasData.length) {
-            try {
-                const res = await fetch(`${API_BASE}/api/routes`);
-                const data = await res.json();
-                if (data && data.routes) {
-                    lineasData = data.routes.map(r => ({ id: r.id, codigo: r.id, nombre: r.name }));
-                }
-            } catch (err) {
-                console.error("Error cargando líneas.", err);
-            }
+        try {
+            const res = await fetch(`${API_BASE}/api/stops`);
+            const data = await res.json();
+            paradasData = Array.isArray(data) ? data : (data.stops || []);
+        } catch (e) {
+            console.error("Error cargando paradas de la base de datos", e);
         }
 
         populateSelects();
@@ -180,21 +186,38 @@
     }
 
     function populateSelects() {
-        const selects = [
+        const lineasSelects = [
             { id: 'add-linea', defaultText: 'Seleccione una línea...' },
             { id: 'filter-linea', defaultText: 'Todas las líneas' },
             { id: 'edit-linea', defaultText: 'Seleccione una línea...' }
         ];
 
-        selects.forEach(item => {
+        lineasSelects.forEach(item => {
             const el = document.getElementById(item.id);
             if (!el) return;
             
             let optionsHTML = `<option value="">${item.defaultText}</option>`;
-            
             if (Array.isArray(lineasData)) {
                 lineasData.forEach(l => {
-                    optionsHTML += `<option value="${l.id}">${l.codigo || l.id} – ${l.nombre}</option>`;
+                    const id = l.id || l.linea_id;
+                    const codigo = l.codigo || l.id;
+                    const nombre = l.nombre || l.name || '';
+                    optionsHTML += `<option value="${id}">${codigo} – ${nombre}</option>`;
+                });
+            }
+            el.innerHTML = optionsHTML;
+        });
+
+        const paradasSelects = ['add-parada', 'edit-parada'];
+        paradasSelects.forEach(id => {
+            const el = document.getElementById(id);
+            if (!el) return;
+
+            let optionsHTML = `<option value="">Seleccione una parada...</option>`;
+            if (Array.isArray(paradasData)) {
+                paradasData.forEach(p => {
+                    const nombreParada = p.nombre || p.name || p.parada || p;
+                    optionsHTML += `<option value="${nombreParada}">${nombreParada}</option>`;
                 });
             }
             el.innerHTML = optionsHTML;
@@ -265,7 +288,7 @@
                         </span>
                     </td>
                     <td class="px-6 py-3.5 text-center text-gray-600 text-xs font-medium">${h.dia_tipo}</td>
-                    <td class="px-6 py-3.5 text-center font-mono font-bold text-gray-800">${horaFormateada}</td>
+                    <td class="px-6 py-3.5 text-center font-mono font-bold text-gray-800">${sidebarFormateada(horaFormateada)}</td>
                     <td class="px-6 py-3.5 text-center text-gray-500">${h.orden_parada}</td>
                     <td class="px-6 py-3.5 text-center whitespace-nowrap">
                         <button onclick="openEdit(${JSON.stringify(h).replace(/"/g, '&quot;')})" class="text-blue-600 hover:text-blue-800 p-1 mx-0.5 transition" title="Editar">
@@ -279,6 +302,8 @@
             `;
         }).join('');
     }
+
+    function sidebarFormateada(str) { return str; }
 
     async function addHorario() {
         const body = {
