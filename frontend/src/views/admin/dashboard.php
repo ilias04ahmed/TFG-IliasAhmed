@@ -66,7 +66,7 @@
 
 <script>
     if (typeof window.API_BASE === 'undefined') {
-        window.API_BASE = 'http://localhost:5000';
+        window.API_BASE = 'https://tfg-backend-api.onrender.com';
     }
 
     async function loadDashboardData() {

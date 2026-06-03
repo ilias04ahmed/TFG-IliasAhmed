@@ -154,7 +154,7 @@
 
     async function solicitarRespuestaAPI(mensaje) {
         const lang = langSelect.value;
-        const apiPath = 'http://localhost:5000/api/chatbot';
+        const apiPath = 'https://tfg-backend-api.onrender.com/api/chatbot';
         
         if (mensaje !== "") añadirIndicadorEscribiendo();
 

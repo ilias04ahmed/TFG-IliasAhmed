@@ -5,8 +5,8 @@ import os
 import random
 from datetime import datetime
 
-BACKEND = "http://localhost:5000/api/gps"
-RECORD_TRIP_URL = "http://localhost:5000/api/record_trip"
+BACKEND = "https://tfg-backend-api.onrender.com/api/gps"
+RECORD_TRIP_URL = "https://tfg-backend-api.onrender.com/api/record_trip"
 
 def load_routes():
     try:

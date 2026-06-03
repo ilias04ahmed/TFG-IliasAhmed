@@ -88,7 +88,7 @@
 </div>
 
 <script>
-    const API_BASE = 'http://localhost:5000';
+    const API_BASE = 'https://tfg-backend-api.onrender.com';
     
     // Configuración visual de los tipos de aviso
     const TIPO_CONFIG = {

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php
-        if (!defined('BACKEND_URL')) define('BACKEND_URL', 'http://localhost:5000');
+        if (!defined('BACKEND_URL')) define('BACKEND_URL', 'https://tfg-backend-api.onrender.com');
     ?>
     <script>const API_BASE = '<?php echo BACKEND_URL; ?>';</script>
     <title>
