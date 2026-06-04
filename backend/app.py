@@ -26,7 +26,8 @@ app = Flask(__name__)
 origenes_permitidos = [
     "http://localhost",
     "http://localhost:80",
-    "http://127.0.0.1"
+    "http://127.0.0.1",
+    "https://tfg-autobuses-frontend.onrender.com"
 ]
 CORS(app, resources={r"/api/*": {"origins": origenes_permitidos}})
 
