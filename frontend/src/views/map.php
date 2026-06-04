@@ -61,9 +61,9 @@
     <div class="flex-grow h-full w-full relative z-10">
         <div id="map" class="h-full w-full"></div>
 
-        <button id="btn-toggle-sidebar" class="absolute top-4 left-4 z-[1001] bg-white/90 backdrop-blur-sm p-2.5 rounded-xl shadow-lg md:hidden border border-gray-100 hover:bg-gray-50 transition">
-            <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        <button id="btn-toggle-sidebar" class="absolute top-4 left-4 z-[1001] bg-blue-600 text-white p-3 rounded-xl shadow-2xl md:hidden border-2 border-white hover:bg-blue-700 active:scale-95 transition flex items-center justify-center">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
         </button>
 
@@ -91,12 +91,22 @@
 </div>
 
 <script>
-    // Inicializar el mapa de Leaflet
+    // Detectar si el dispositivo actual es un móvil para prevenir fallos de comportamiento
+    const esMovil = L.Browser.mobile;
+
+    // Inicializar el mapa de Leaflet aplicando restricciones si es móvil
     const map = L.map('map', {
-        zoomControl: false 
+        zoomControl: !esMovil,         // Desactiva los botones +/- en móvil (evita toques accidentales)
+        touchZoom: !esMovil,           // Desactiva el zoom de pellizcar con dos dedos en móvil
+        doubleClickZoom: !esMovil,     // Desactiva el zoom al hacer doble clic rápido en móvil
+        scrollWheelZoom: true,
+        boxZoom: false
     }).setView([35.8883, -5.3162], 14);
 
-    L.control.zoom({ position: 'topright' }).addTo(map);
+    // Si no es móvil, añadimos los controles de zoom arriba a la derecha de forma limpia
+    if (!esMovil) {
+        L.control.zoom({ position: 'topright' }).addTo(map);
+    }
 
     L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
         attribution: '&copy; OpenStreetMap &copy; CARTO',
@@ -134,21 +144,17 @@
     let rutasActivas = new Set();
     let todasLasRutas = [];
 
-    // Función simple para sacar un color si la ruta no tiene uno asignado
     function obtenerColorRuta(ruta) {
         if (ruta.color) return ruta.color;
-        
         const colores = ['#3B82F6', '#EF4444', '#10B981', '#F59E0B', '#8B5CF6', '#EC4899', '#06B6D4'];
         let sumaCaracteres = 0;
         const idString = String(ruta.id);
-        
         for (let i = 0; i < idString.length; i++) {
             sumaCaracteres += idString.charCodeAt(i);
         }
         return colores[sumaCaracteres % colores.length];
     }
 
-    // Cargar la lista de rutas en el sidebar
     function pintarSidebarRutas(rutas) {
         const contenedor = document.getElementById('routes-list-container');
         contenedor.innerHTML = '';
@@ -215,7 +221,6 @@
         pintarSidebarRutas(Object.values(infoRutas));
     }
 
-    // Controlar qué capas se ven y cuáles no
     function actualizarCapasMapa() {
         for (let idRuta in infoRutas) {
             const visible = rutasActivas.has(idRuta);
@@ -246,7 +251,6 @@
         }
     }
 
-    // Efectos visuales al pasar por encima de la lista lateral
     function resaltarLineaMapa(idRuta) {
         if (!rutasActivas.has(idRuta)) return;
         const capa = capasMapa['route_' + idRuta];
@@ -264,7 +268,6 @@
         }
     }
 
-    // Quitar efectos al sacar el cursor de la lista lateral
     function quitarResaltadoLineaMapa(idRuta) {
         if (!rutasActivas.has(idRuta)) return;
         const capa = capasMapa['route_' + idRuta];
@@ -281,14 +284,12 @@
         }
     }
 
-    // Cargar trazas y paradas específicas de cada ruta
     async function obtenerRutasServidor() {
         try {
             const res = await fetch(API_BASE + '/api/routes');
             if (!res.ok) return;
             const datos = await res.json();
 
-            // Limpiar mapas antiguos si los hubiera
             for (let clave in capasMapa) {
                 if (clave.startsWith('route_') || clave.startsWith('stops_')) {
                     map.removeLayer(capasMapa[clave]);
@@ -307,7 +308,6 @@
                     todasLasRutas.push(ruta.id);
                     rutasActivas.add(ruta.id);
 
-                    // Pintar polilíneas del recorrido
                     if (ruta.path && ruta.path.length > 0) {
                         const tramos = Array.isArray(ruta.path[0]) ? ruta.path : [ruta.path];
                         const grupoLineas = L.featureGroup();
@@ -327,7 +327,6 @@
                         capasMapa['route_' + ruta.id] = grupoLineas;
                     }
 
-                    // Pintar paradas asociadas a la línea
                     if (ruta.stops) {
                         const marcadoresParadas = [];
                         ruta.stops.forEach(parada => {
@@ -366,7 +365,6 @@
         }
     }
 
-    // Cargar todas las paradas globales fijas
     async function obtenerTodasLasParadas() {
         try {
             const res = await fetch(API_BASE + '/api/stops');
@@ -391,7 +389,6 @@
         }
     }
 
-    // Animación normal paso a paso para el movimiento del autobús
     function moverAutobusSuave(marcador, destinoLat, destinoLon, tiempoTotal) {
         const posicionInicial = marcador.getLatLng();
         const inicioLat = posicionInicial.lat;
@@ -419,7 +416,6 @@
         requestAnimationFrame(actualizarPosicion);
     }
 
-    // Consultar ubicación de autobuses y refrescar posiciones
     async function refrescarPosicionBuses() {
         try {
             const res = await fetch(`${API_BASE}/api/buses?_nocache=${Date.now()}`);
@@ -432,7 +428,6 @@
                 const claveBus = 'BUS_' + bus.id;
 
                 if (!capasMapa[claveBus]) {
-                    // Si el bus es nuevo se añade al mapa
                     const nuevoMarcador = L.marker([bus.lat, bus.lon], {
                         icon: createBusIcon(colorBus),
                         routeId: bus.route_id
@@ -446,7 +441,6 @@
                         </div>
                     `);
 
-                    // Evento al pulsar sobre el autobús para calcular ETA
                     nuevoMarcador.on('click', async () => {
                         document.getElementById('no-selection').classList.add('hidden');
                         document.getElementById('selected-bus-info').classList.remove('hidden');
@@ -463,8 +457,9 @@
                                 const segundos = Math.floor(datosEta.eta_seconds % 60);
                                 let textoTiempo = "";
                                 
-                                if (minutos > 0) textoTiempo += minutes + " min ";
-                                if (segundos > 0 || minutes === 0) textoTiempo += segundos + " seg";
+                                // Corrección del bug original cambiando 'minutes' por 'minutos'
+                                if (minutos > 0) textoTiempo += minutos + " min ";
+                                if (segundos > 0 || minutos === 0) textoTiempo += segundos + " seg";
 
                                 document.getElementById('eta-time').innerText = textoTiempo.trim();
                             } else {
@@ -477,7 +472,6 @@
 
                     capasMapa[claveBus] = nuevoMarcador;
                 } else {
-                    // Si ya existía el marcador, simplemente variamos su ubicación con animación
                     const marcadorExistente = capasMapa[claveBus];
                     moverAutobusSuave(marcadorExistente, bus.lat, bus.lon, 900);
 
@@ -489,7 +483,6 @@
                 }
             });
 
-            // Quitar del mapa los buses que ya no están activos
             for (let clave in capasMapa) {
                 if (clave.startsWith('BUS_')) {
                     const encontrado = listaBuses.some(b => 'BUS_' + b.id === clave);
@@ -500,7 +493,6 @@
                 }
             }
 
-            // Gestionar cartel flotante si no hay buses
             const aviso = document.getElementById('aviso-sin-buses');
             if (aviso) {
                 if (listaBuses.length === 0) {
@@ -514,13 +506,11 @@
         }
     }
 
-    // Listeners del DOM asignados de manera limpia
     document.getElementById('btn-toggle-todo').addEventListener('click', alternarTodasLasRutas);
     document.getElementById('btn-toggle-sidebar').addEventListener('click', () => {
         document.getElementById('sidebar').classList.toggle('-translate-x-full');
     });
 
-    // Esperar a que carguen las rutas antes de empezar a buscar los buses
     obtenerTodasLasParadas()
         .then(() => obtenerRutasServidor())
         .then(() => {
