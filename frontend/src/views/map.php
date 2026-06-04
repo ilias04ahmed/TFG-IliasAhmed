@@ -1,24 +1,17 @@
 <div class="flex h-[calc(100vh-64px)] overflow-hidden relative">
-    <aside class="fixed md:relative top-16 md:top-0 h-[calc(100vh-64px)] md:h-full w-72 sm:w-80 md:w-96 bg-gradient-to-b from-white to-gray-50 shadow-2xl z-[1000] md:z-20 flex flex-col transition-all duration-300 transform -translate-x-full md:translate-x-0 border-r border-gray-100" id="sidebar">
+    <aside class="fixed md:relative top-0 left-0 h-full w-72 sm:w-80 md:w-96 bg-gradient-to-b from-white to-gray-50 shadow-2xl z-[1000] md:z-20 flex flex-col transition-all duration-300 transform -translate-x-full md:translate-x-0 border-r border-gray-100" id="sidebar">
         
         <div class="p-5 border-b border-gray-100 bg-white">
-            <div class="flex items-center justify-between mb-3">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-teal-400 flex items-center justify-center shadow-md">
-                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-1.447-.894L15 7m0 13V7"></path>
-                        </svg>
-                    </div>
-                    <div>
-                        <h2 class="text-lg font-bold text-gray-800">Rutas Activas</h2>
-                        <p class="text-xs text-gray-400">Mapa interactivo en tiempo real</p>
-                    </div>
-                </div>
-                <button id="btn-close-sidebar" class="md:hidden text-gray-400 hover:text-gray-600 p-1 transition">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-teal-400 flex items-center justify-center shadow-md">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-1.447-.894L15 7m0 13V7"></path>
                     </svg>
-                </button>
+                </div>
+                <div>
+                    <h2 class="text-lg font-bold text-gray-800">Rutas Activas</h2>
+                    <p class="text-xs text-gray-400">Mapa interactivo en tiempo real</p>
+                </div>
             </div>
             <div class="flex justify-between items-center">
                 <span class="text-xs text-gray-400 flex items-center gap-1">
@@ -63,7 +56,7 @@
                 </p>
             </div>
         </div>
-    </</aside>
+    </aside>
 
     <div class="flex-grow h-full w-full relative z-10">
         <div id="map" class="h-full w-full"></div>
@@ -98,17 +91,19 @@
 </div>
 
 <script>
+    // Detectar si el dispositivo actual es un móvil para prevenir fallos de comportamiento
     const esMovil = L.Browser.mobile;
 
-    // Inicialización del mapa (Opciones de zoom habilitadas en móviles)
+    // Inicializar el mapa de Leaflet aplicando restricciones si es móvil
     const map = L.map('map', {
-        zoomControl: !esMovil,
-        touchZoom: true,
-        doubleClickZoom: true,
+        zoomControl: !esMovil,         // Desactiva los botones +/- en móvil (evita toques accidentales)
+        touchZoom: !esMovil,           // Desactiva el zoom de pellizcar con dos dedos en móvil
+        doubleClickZoom: !esMovil,     // Desactiva el zoom al hacer doble clic rápido en móvil
         scrollWheelZoom: true,
         boxZoom: false
     }).setView([35.8883, -5.3162], 14);
 
+    // Si no es móvil, añadimos los controles de zoom arriba a la derecha de forma limpia
     if (!esMovil) {
         L.control.zoom({ position: 'topright' }).addTo(map);
     }
@@ -119,12 +114,7 @@
         maxZoom: 20
     }).addTo(map);
 
-    let capasMapa = {};
-    let infoRutas = {};
-    let rutasActivas = new Set();
-    let todasLasRutas = [];
-
-    // Renderizado de componentes visuales de las rutas
+    // Generar icono del bus con su color
     function createBusIcon(color) {
         return L.divIcon({
             className: 'custom-bus-icon',
@@ -148,6 +138,12 @@
         iconAnchor: [6, 6]
     });
 
+    // Estado de las capas y rutas
+    let capasMapa = {};
+    let infoRutas = {};
+    let rutasActivas = new Set();
+    let todasLasRutas = [];
+
     function obtenerColorRuta(ruta) {
         if (ruta.color) return ruta.color;
         const colores = ['#3B82F6', '#EF4444', '#10B981', '#F59E0B', '#8B5CF6', '#EC4899', '#06B6D4'];
@@ -159,7 +155,6 @@
         return colores[sumaCaracteres % colores.length];
     }
 
-    // Gestión e interacción de la interfaz de rutas
     function pintarSidebarRutas(rutas) {
         const contenedor = document.getElementById('routes-list-container');
         contenedor.innerHTML = '';
@@ -289,7 +284,6 @@
         }
     }
 
-    // Comunicación con el servidor y obtención de datos de red
     async function obtenerRutasServidor() {
         try {
             const res = await fetch(API_BASE + '/api/routes');
@@ -395,7 +389,6 @@
         }
     }
 
-    // Animación y refresco en tiempo real de los vehículos
     function moverAutobusSuave(marcador, destinoLat, destinoLon, tiempoTotal) {
         const posicionInicial = marcador.getLatLng();
         const inicioLat = posicionInicial.lat;
@@ -464,6 +457,7 @@
                                 const segundos = Math.floor(datosEta.eta_seconds % 60);
                                 let textoTiempo = "";
                                 
+                                // Corrección del bug original cambiando 'minutes' por 'minutos'
                                 if (minutos > 0) textoTiempo += minutos + " min ";
                                 if (segundos > 0 || minutos === 0) textoTiempo += segundos + " seg";
 
@@ -512,18 +506,11 @@
         }
     }
 
-    // Controladores de eventos de la interfaz (Abrir y Cerrar Sidebar)
     document.getElementById('btn-toggle-todo').addEventListener('click', alternarTodasLasRutas);
-    
     document.getElementById('btn-toggle-sidebar').addEventListener('click', () => {
-        document.getElementById('sidebar').classList.remove('-translate-x-full');
+        document.getElementById('sidebar').classList.toggle('-translate-x-full');
     });
 
-    document.getElementById('btn-close-sidebar').addEventListener('click', () => {
-        document.getElementById('sidebar').classList.add('-translate-x-full');
-    });
-
-    // Inicialización del servicio
     obtenerTodasLasParadas()
         .then(() => obtenerRutasServidor())
         .then(() => {
