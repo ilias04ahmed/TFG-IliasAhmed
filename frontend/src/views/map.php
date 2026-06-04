@@ -1,5 +1,5 @@
-<div class="flex h-[calc(100vh-64px)]">
-    <aside class="w-80 md:w-96 lg:w-[26rem] bg-gradient-to-b from-white to-gray-50 shadow-2xl z-20 flex flex-col transition-all duration-300 transform border-r border-gray-100" id="sidebar">
+<div class="flex h-[calc(100vh-64px)] overflow-hidden relative">
+    <aside class="fixed md:relative top-0 left-0 h-full w-72 sm:w-80 md:w-96 bg-gradient-to-b from-white to-gray-50 shadow-2xl z-[1000] md:z-20 flex flex-col transition-all duration-300 transform -translate-x-full md:translate-x-0 border-r border-gray-100" id="sidebar">
         
         <div class="p-5 border-b border-gray-100 bg-white">
             <div class="flex items-center gap-3 mb-3">
@@ -58,10 +58,10 @@
         </div>
     </aside>
 
-    <div class="flex-grow relative z-10">
+    <div class="flex-grow h-full w-full relative z-10">
         <div id="map" class="h-full w-full"></div>
 
-        <button id="btn-toggle-sidebar" class="absolute top-4 left-4 z-[500] bg-white/90 backdrop-blur-sm p-2.5 rounded-xl shadow-lg md:hidden border border-gray-100 hover:bg-gray-50 transition">
+        <button id="btn-toggle-sidebar" class="absolute top-4 left-4 z-[1001] bg-white/90 backdrop-blur-sm p-2.5 rounded-xl shadow-lg md:hidden border border-gray-100 hover:bg-gray-50 transition">
             <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
@@ -264,6 +264,7 @@
         }
     }
 
+    // Quitar efectos al sacar el cursor de la lista lateral
     function quitarResaltadoLineaMapa(idRuta) {
         if (!rutasActivas.has(idRuta)) return;
         const capa = capasMapa['route_' + idRuta];
@@ -295,6 +296,7 @@
                 }
             }
             infoRutas = {};
+            todasLasRutas = [];
             
             if (datos.routes) {
                 datos.routes.forEach(ruta => {
@@ -461,8 +463,8 @@
                                 const segundos = Math.floor(datosEta.eta_seconds % 60);
                                 let textoTiempo = "";
                                 
-                                if (minutos > 0) textoTiempo += minutos + " min ";
-                                if (segundos > 0 || minutos === 0) textoTiempo += segundos + " seg";
+                                if (minutos > 0) textoTiempo += minutes + " min ";
+                                if (segundos > 0 || minutes === 0) textoTiempo += segundos + " seg";
 
                                 document.getElementById('eta-time').innerText = textoTiempo.trim();
                             } else {
@@ -487,6 +489,17 @@
                 }
             });
 
+            // Quitar del mapa los buses que ya no están activos
+            for (let clave in capasMapa) {
+                if (clave.startsWith('BUS_')) {
+                    const encontrado = listaBuses.some(b => 'BUS_' + b.id === clave);
+                    if (!encontrado) {
+                        map.removeLayer(capasMapa[clave]);
+                        delete capasMapa[clave];
+                    }
+                }
+            }
+
             // Gestionar cartel flotante si no hay buses
             const aviso = document.getElementById('aviso-sin-buses');
             if (aviso) {
@@ -507,9 +520,10 @@
         document.getElementById('sidebar').classList.toggle('-translate-x-full');
     });
 
-    // Carga inicial secuencial
-    obtenerTodasLasParadas().then(() => {
-        obtenerRutasServidor();
-        setInterval(refrescarPosicionBuses, 1000);
-    });
+    // Esperar a que carguen las rutas antes de empezar a buscar los buses
+    obtenerTodasLasParadas()
+        .then(() => obtenerRutasServidor())
+        .then(() => {
+            setInterval(refrescarPosicionBuses, 1000);
+        });
 </script>
