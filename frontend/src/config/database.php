@@ -5,13 +5,15 @@ class Database {
     private $pdo;
 
     private function __construct() {
-    
-        $host = getenv('DATABASE_HOST') ?: 'localhost';
-        $db   = getenv('DATABASE_NAME') ?: 'gpsdb';
-        $user = getenv('DATABASE_USER') ?: 'postgres';
-        $pass = getenv('DATABASE_PASSWORD') ?: '';
+        
+        // Colocamos tus datos de Render como valores por defecto si getenv() falla
+        $host = getenv('DATABASE_HOST') ?: 'dpg-d8g6td3tqb8s73cl38l0-a.frankfurt-postgres.render.com';
+        $db   = getenv('DATABASE_NAME') ?: 'tfg_bus_db';
+        $user = getenv('DATABASE_USER') ?: 'admin_tfg';
+        $pass = getenv('DATABASE_PASSWORD') ?: 'u7MQ82LTEUHhMh0h5wO02ucJkVHf5JAk';
 
-        $dsn = "pgsql:host=$host;port=5432;dbname=$db;";
+        // ¡MUY IMPORTANTE!: Añadimos "sslmode=require" porque Render no permite conexiones externas sin SSL
+        $dsn = "pgsql:host=$host;port=5432;dbname=$db;sslmode=require;";
 
         try {
             $this->pdo = new PDO($dsn, $user, $pass);
@@ -21,7 +23,6 @@ class Database {
             die("Error al conectar con la base de datos: " . $e->getMessage());
         }
     }
-
     public static function getInstance() {
         if (self::$instance === null) {
             self::$instance = new Database();
