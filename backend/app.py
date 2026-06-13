@@ -542,18 +542,37 @@ def get_active_buses():
                 rows = cursor.fetchall()
             
             result = []
+            ahora = time.time()
+            
             for r in rows:
                 has_gps = r[2] is not None
+                es_reciente = False
+                
+                if has_gps and r[5]:
+                    try:
+                        if isinstance(r[5], str):
+                            estructura_tiempo = time.strptime(r[5].split('.')[0], '%Y-%m-%d %H:%M:%S')
+                            timestamp_bus = time.mktime(estructura_tiempo)
+                        else:
+                            timestamp_bus = r[5].timestamp()
+                        
+                        if ahora - timestamp_bus < 300:
+                            es_reciente = True
+                    except Exception:
+                        es_reciente = False
+
+                esta_activo = has_gps and es_reciente
+                
                 result.append({
                     "id": r[0],
                     "codigo": r[0],
                     "matricula": r[1] or "Sin matrícula",
-                    "lat": float(r[2]) if r[2] else None,
-                    "lon": float(r[3]) if r[3] else None,
-                    "route_id": r[4],
+                    "lat": float(r[2]) if esta_activo else None,
+                    "lon": float(r[3]) if esta_activo else None,
+                    "route_id": r[4] if esta_activo else None,
                     "last_update": str(r[5]) if r[5] else "Nunca",
-                    "estado": "En Ruta" if has_gps else "Inactivo",
-                    "activo": has_gps
+                    "estado": "En Ruta" if esta_activo else "Inactivo",
+                    "activo": esta_activo
                 })
             return jsonify(result)
         except Exception as e:
