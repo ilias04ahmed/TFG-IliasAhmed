@@ -3,7 +3,7 @@ require_once __DIR__ . '/../config/database.php';
 
 class ReportesController
 {
-    private $apiUrl = 'http://api:5000/api';
+    private $apiUrl = 'https://tfg-autobuses-frontend.onrender.com/api';
 
     public function index()
     {
